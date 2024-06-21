@@ -48,6 +48,20 @@ pipeline {
                 }
             }
         }
+              
+   stage('polaris') {
+        steps {
+            withCredentials([string(credentialsId: 'poc.polarissynopsys.com', variable: 'BRIDGE_POLARIS_ACCESSTOKEN')]) {
+                script {
+                  
+                      sh('curl -fLsS -o bridge.zip $BRIDGECLI_LINUX64 && unzip $RUNNER_TEMP bridge.zip && rm -f bridge.zip && /home/agent/workspace/GuessingGame/synopsys-bridge --verbose --stage polaris polaris.assessment.types=SAST,SCA')
+                  
+             
+                }
+            }
+        }
+    }
+                  
          
      
     }
