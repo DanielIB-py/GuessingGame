@@ -33,10 +33,10 @@ pipeline {
                }
         }
 
-         stage("version"){
+         stage("Compilar"){
             steps{
                 script{
-                    sh('ant -version')
+                    sh('ant compilar')
                 }
             }
         }
