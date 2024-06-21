@@ -33,6 +33,14 @@ pipeline {
                }
         }
 
+         stage("Limpiar"){
+            steps{
+                script{
+                    sh('ant limpiar')
+                }
+            }
+        }
+        
          stage("Compilar"){
             steps{
                 script{
