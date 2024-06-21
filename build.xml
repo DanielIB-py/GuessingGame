@@ -1,0 +1,34 @@
+<project name="GuessingGame" default="compilar" basedir=".">
+    <!-- Definir las propiedades -->
+    <property name="src.dir" value="src"/>
+    <property name="build.dir" value="build"/>
+    <property name="dist.dir" value="dist"/>
+    <property name="classes.dir" value="${build.dir}/classes"/>
+    <property name="jar.file" value="${dist.dir}/GuessingGame.jar"/>
+
+    <!-- Limpiar el directorio de compilación -->
+    <target name="limpiar">
+        <delete dir="${build.dir}"/>
+        <delete dir="${dist.dir}"/>
+    </target>
+
+    <!-- Crear los directorios necesarios -->
+    <target name="preparar" depends="limpiar">
+        <mkdir dir="${classes.dir}"/>
+        <mkdir dir="${dist.dir}"/>
+    </target>
+
+    <!-- Compilar los archivos fuente -->
+    <target name="compilar" depends="preparar">
+        <javac srcdir="${src.dir}" destdir="${classes.dir}"/>
+    </target>
+
+    <!-- Crear el archivo JAR -->
+    <target name="empaquetar" depends="compilar">
+        <jar destfile="${jar.file}" basedir="${classes.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="com.example.guessinggame.GuessingGame"/>
+            </manifest>
+        </jar>
+    </target>
+</project>
