@@ -33,12 +33,13 @@ pipeline {
                }
         }
 
-        stage('Version'){
+         stage("version"){
             steps{
-                sh '(ant -version')
+                script{
+                    sh('ant -version')
+                }
             }
         }
-        
          
         stage("Build & Push Docker Image"){
             steps{
